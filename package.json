@@ -50,7 +50,8 @@
     "test:lint": "eslint src test demo script",
     "test:format": "prettier --check src test demo script",
     "build:logo": "node script/build-logo.js",
-    "screenshot": "node script/screenshot.js"
+    "screenshot": "node script/screenshot.js",
+    "build:site": "vite build --mode site"
   },
   "dependencies": {
     "@chenglou/pretext": "^0.0.4",

@@ -69,7 +69,8 @@ await document.fonts.load(cssFont(font)); // the exact string the layout measure
 
 ## Demos
 
-Three demos live in [`demo/`](./demo). Run them with `npm install && npm run dev`.
+Three demos run at **[calligram.bairui.dev](https://calligram.bairui.dev)**. The source is in
+[`demo/`](./demo) — run them locally with `npm install && npm run dev`.
 
 ### [U.S. Map Paper](./demo/us-map-paper)
 

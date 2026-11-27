@@ -4,3 +4,5 @@ dist
 cache
 **-actual.svg
 **-actual.html
+.vercel
+.env*
