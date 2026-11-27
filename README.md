@@ -25,10 +25,9 @@ Then give [`layoutTextInPath`](#layouttextinpathoptions) some text and a closed 
 what it hands back:
 
 ```js
-import {layoutTextInPath} from "calligram";
+import {layoutTextInPath, pathCircle} from "calligram";
 
-// Any closed `d` string works. This one is a circle.
-const path = "M 170 15 A 155 155 0 1 0 170 325 A 155 155 0 1 0 170 15";
+const path = pathCircle(170, 170, 155); // or any closed `d` string of your own
 
 const layout = layoutTextInPath({
   text: "Hello, Calligram! I love generative art! ".repeat(6),
@@ -62,7 +61,10 @@ loaded before you call `layoutTextInPath`**, or it will measure the fallback fac
 fragments will overlap once they render in the real one.
 
 ```js
-await document.fonts.load("12px Inter");
+import {cssFont} from "calligram";
+
+const font = {fontSize: 12, fontFamily: "Inter"};
+await document.fonts.load(cssFont(font)); // the exact string the layout measures with
 ```
 
 ## Demos
@@ -273,6 +275,44 @@ long-running apps or tests if you need to free memory or reset measurement state
 
 ```js
 clearTextCache();
+```
+
+### Path helpers
+
+`layoutTextInPath` needs a **closed** path, so these build the usual ones. Each returns a plain
+`d` string you can also hand to a `<path>` element or a `Path2D`.
+
+- **pathCircle(cx, cy, r)**
+- **pathEllipse(cx, cy, rx, ry)**
+- **pathRect(x, y, width, height)**
+- **pathPolygon(points)** — `points` as `[[x, y], …]`; the ring is closed for you.
+
+```js
+import {pathCircle, pathEllipse, pathPolygon, pathRect} from "calligram";
+
+pathCircle(170, 170, 155);
+pathEllipse(170, 170, 155, 90);
+pathRect(10, 10, 320, 200);
+pathPolygon([
+  [170, 20],
+  [320, 130],
+  [20, 130],
+]);
+```
+
+For anything else — a star, a map outline, a glyph — build the `d` string however you like, or
+take one from [d3-path](https://github.com/d3/d3-path) or
+[d3-shape](https://github.com/d3/d3-shape), as the [Yin Yang](./demo/yin-yang) demo does. Holes
+work too: append a second subpath, as the quad-with-a-triangle-hole test case does.
+
+### cssFont(options)
+
+Builds the CSS `font` shorthand from the same five font fields the layout takes, with the same
+order and defaults. This is the exact string `prepareText` measures with, so use it when setting
+`context.font` or a CSS `font` property to be sure drawing matches layout.
+
+```js
+context.font = cssFont({fontSize: 12, fontFamily: "Inter"});
 ```
 
 ## Development

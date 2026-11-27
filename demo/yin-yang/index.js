@@ -1,5 +1,5 @@
 import * as cg from "calligram";
-import {cssFont, pathCircle} from "../helpers.js";
+import {cssFont, pathCircle} from "calligram";
 import * as d3 from "d3";
 import svgpath from "svgpath";
 

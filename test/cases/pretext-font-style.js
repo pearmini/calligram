@@ -1,5 +1,5 @@
 import * as cm from "../../src/index.js";
-import {pathCircle, renderPretext} from "../helpers.js";
+import {renderPretext} from "../helpers.js";
 
 export function pretextFontStyle() {
   const layout = cm.layoutTextInPath({
@@ -9,7 +9,7 @@ export function pretextFontStyle() {
     fontStyle: "italic",
     fontWeight: "700",
     fontVariant: "normal",
-    path: pathCircle(200, 200, 95),
+    path: cm.pathCircle(200, 200, 95),
   });
   return renderPretext(layout);
 }

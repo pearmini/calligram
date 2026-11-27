@@ -1,6 +1,6 @@
 import ml5 from "ml5";
 import * as cg from "calligram";
-import {cssFont} from "../helpers.js";
+import {cssFont} from "calligram";
 import * as d3 from "d3";
 import {layoutWithLines} from "@chenglou/pretext";
 import {TEXT, TITLE_TEXT} from "./content.js";

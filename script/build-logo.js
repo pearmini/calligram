@@ -10,7 +10,7 @@
 import {writeFileSync} from "node:fs";
 import {hachureLines} from "hachure-fill";
 import {pointsOnPath} from "points-on-path";
-import {pathCircle} from "../demo/helpers.js";
+import {pathCircle} from "../src/index.js";
 
 const SIZE = 64;
 const CENTER = SIZE / 2;

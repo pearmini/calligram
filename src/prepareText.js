@@ -1,16 +1,5 @@
 import {prepareWithSegments} from "@chenglou/pretext";
-
-function px(n) {
-  return typeof n === "number" ? `${n}px` : n;
-}
-
-/**
- * Builds the CSS `font` string for Pretext measurement (same order as the `font` shorthand).
- * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font
- */
-function cssFont({fontStyle, fontVariant, fontWeight, fontSize, fontFamily}) {
-  return `${fontStyle} ${fontVariant} ${fontWeight} ${px(fontSize)} ${fontFamily}`.replace(/\s+/g, " ").trim();
-}
+import {cssFont} from "./cssFont.js";
 
 export function prepareText(
   text,

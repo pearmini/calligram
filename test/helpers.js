@@ -4,11 +4,6 @@ function px(n) {
   return typeof n === "number" ? `${n}px` : n;
 }
 
-// The same formula Charming's cm.pathCircle used, so the recorded `d` attributes stay identical.
-export function pathCircle(cx, cy, r) {
-  return `M ${cx} ${cy - r} A ${r} ${r} 0 1 0 ${cx} ${cy + r} A ${r} ${r} 0 1 0 ${cx} ${cy - r}`;
-}
-
 export function renderPretext({
   texts,
   lines,

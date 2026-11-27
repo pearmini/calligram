@@ -2,7 +2,6 @@ import "./measure.js";
 import {afterEach, describe, expect, test} from "vitest";
 import {prepareMemo as _prepareMemo} from "../src/prepareMemo.js";
 import * as cm from "../src/index.js";
-import {pathCircle} from "./helpers.js";
 
 const defaultLayoutFont = {
   fontSize: 16,
@@ -74,7 +73,7 @@ describe("clearTextCache", () => {
 
 describe("layoutTextInPath", () => {
   test("returns an object with texts, lines, font fields, and path", () => {
-    const path = pathCircle(200, 200, 90);
+    const path = cm.pathCircle(200, 200, 90);
     const result = cm.layoutTextInPath({
       text: "hello world ".repeat(40),
       path,
@@ -97,7 +96,7 @@ describe("layoutTextInPath", () => {
   test("hachure lines are segments [ [x1,y1], [x2,y2] ]", () => {
     const result = cm.layoutTextInPath({
       text: "a ".repeat(200),
-      path: pathCircle(200, 200, 100),
+      path: cm.pathCircle(200, 200, 100),
     });
 
     expect(result.lines.length).toBeGreaterThan(0);
@@ -111,7 +110,7 @@ describe("layoutTextInPath", () => {
   test("text items combine Pretext layout lines with x, y, angle, lineHeight", () => {
     const result = cm.layoutTextInPath({
       text: "hello world ".repeat(40),
-      path: pathCircle(200, 200, 90),
+      path: cm.pathCircle(200, 200, 90),
     });
 
     expect(result.texts.length).toBeGreaterThan(0);

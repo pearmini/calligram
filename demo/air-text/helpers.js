@@ -1,4 +1,4 @@
-import {pathPolygon, pathRect} from "../helpers.js";
+import {pathPolygon, pathRect} from "calligram";
 import * as d3 from "d3";
 import ClipperLib from "clipper-lib";
 
