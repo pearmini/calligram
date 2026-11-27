@@ -1,6 +1,4 @@
-<img src="./public/logo.svg" width="34" height="34" alt="" align="right" />
-
-# Calligram
+# Calligram <img src="./public/logo.svg" width="34" height="34" alt="" align="right" />
 
 A **calligram** is text arranged so that it forms a shape. Calligram is a small library for
 making them: it flows a string into a **closed** shape described by an SVG
