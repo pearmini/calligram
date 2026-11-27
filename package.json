@@ -1,6 +1,6 @@
 {
   "name": "calligram",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Flow text inside closed SVG paths — a small, fast text-layout layer on top of Pretext",
   "keywords": [
     "calligram",
