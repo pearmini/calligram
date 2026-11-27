@@ -23,6 +23,7 @@
   "exports": {
     ".": {
       "import": "./src/index.js",
+      "require": "./dist/calligram.umd.cjs",
       "default": "./src/index.js"
     },
     "./package.json": "./package.json"
