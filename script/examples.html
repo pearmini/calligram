@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Calligram — README figures</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" />
+    <style>
+      body {
+        margin: 0;
+        background: #fff;
+        font-family: Inter, system-ui, sans-serif;
+      }
+      .figure {
+        width: 340px;
+        height: 340px;
+        display: grid;
+        place-items: center;
+        background: #fff;
+      }
+      svg text {
+        fill: #1a1a1a;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="module">
+      import {layoutTextInPath} from "/src/index.js";
+      import {pathCircle, pathPolygon} from "/demo/helpers.js";
+
+      const TEXT = "Hello, Calligram! I love generative art! ";
+      const NS = "http://www.w3.org/2000/svg";
+
+      // Draws a layout the way the README's SVG example does, optionally outlining the path.
+      function render(layout, {size = 340, outline = true} = {}) {
+        const svg = document.createElementNS(NS, "svg");
+        svg.setAttribute("width", size);
+        svg.setAttribute("height", size);
+        svg.setAttribute("viewBox", `0 0 ${size} ${size}`);
+
+        if (outline) {
+          const p = document.createElementNS(NS, "path");
+          p.setAttribute("d", layout.path);
+          p.setAttribute("fill", "none");
+          p.setAttribute("stroke", "#00adb5");
+          p.setAttribute("stroke-width", "1.25");
+          svg.append(p);
+        }
+
+        for (const t of layout.texts) {
+          const node = document.createElementNS(NS, "text");
+          node.setAttribute("text-anchor", "middle");
+          node.setAttribute("dominant-baseline", "central");
+          node.setAttribute("font-size", `${layout.fontSize}px`);
+          node.setAttribute("font-family", layout.fontFamily);
+          node.setAttribute("transform", `translate(${t.x}, ${t.y}) rotate(${t.angle})`);
+          node.textContent = t.text;
+          svg.append(node);
+        }
+        return svg;
+      }
+
+      const circle = pathCircle(170, 170, 155);
+      const star = pathPolygon([
+        [170, 20],
+        [215, 125],
+        [320, 130],
+        [240, 200],
+        [270, 310],
+        [170, 250],
+        [70, 310],
+        [100, 200],
+        [20, 130],
+        [125, 125],
+      ]);
+
+      const figures = {
+        layout: {text: TEXT.repeat(6), path: circle, fontSize: 12, fontFamily: "Inter"},
+        "line-height": {text: TEXT.repeat(6), path: circle, fontSize: 12, fontFamily: "Inter", lineHeight: 30},
+        angle: {text: TEXT.repeat(6), path: circle, fontSize: 12, fontFamily: "Inter", angle: 25},
+        repeat: {text: TEXT, path: circle, fontSize: 12, fontFamily: "Inter", repeat: false},
+        star: {text: TEXT.repeat(6), path: star, fontSize: 11, fontFamily: "Inter"},
+      };
+
+      // Pretext measures through canvas, so Inter must actually be loaded before layout:
+      // document.fonts.ready alone resolves before any element uses the face, and measuring
+      // against the fallback font makes fragments overlap when they render in real Inter.
+      await Promise.all([11, 12, 13].map((size) => document.fonts.load(`${size}px Inter`)));
+      await document.fonts.ready;
+
+      for (const [id, options] of Object.entries(figures)) {
+        const box = document.createElement("div");
+        box.className = "figure";
+        box.id = id;
+        box.append(render(layoutTextInPath(options)));
+        document.body.append(box);
+      }
+
+      document.body.dataset.ready = "true";
+    </script>
+  </body>
+</html>
