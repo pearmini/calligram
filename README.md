@@ -1,4 +1,4 @@
-<img src="./public/logo.svg" width="72" height="72" alt="" align="right" />
+<img src="./public/logo.svg" width="34" height="34" alt="" align="right" />
 
 # Calligram
 
