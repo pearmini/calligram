@@ -65,6 +65,31 @@ const font = {fontSize: 12, fontFamily: "Inter"};
 await document.fonts.load(cssFont(font)); // the exact string the layout measures with
 ```
 
+### From a browser, with no build step
+
+As an ES module from a CDN:
+
+```html
+<script type="module">
+  import {layoutTextInPath, pathCircle} from "https://esm.sh/calligram";
+
+  const layout = layoutTextInPath({text: "…", path: pathCircle(170, 170, 155)});
+</script>
+```
+
+Or as a classic script, which exposes the global **`cg`**:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/calligram"></script>
+<script>
+  const layout = cg.layoutTextInPath({text: "…", path: cg.pathCircle(170, 170, 155)});
+</script>
+```
+
+The UMD build has the three dependencies bundled in, so it is the only file you need — about
+35 kB minified. In production, pin a version:
+`https://cdn.jsdelivr.net/npm/calligram@0.1/dist/calligram.umd.min.js`.
+
 ## Demos
 
 Three demos run at **[calligram.bairui.dev](https://calligram.bairui.dev)**. The source is in
@@ -323,6 +348,8 @@ npm run dev         # the demos, plus the test cases at /test/
 npm run test:watch  # tests in watch mode
 npm run test:update # re-record the SVG snapshots
 npm run screenshot  # re-capture the images in img/ (needs the dev server)
+npm run build       # bundle the UMD build into dist/ (runs automatically on publish)
+npm run build:site  # build the demo site into dist-site/
 npm run build:logo  # regenerate public/logo.svg
 ```
 
