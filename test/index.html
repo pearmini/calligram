@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calligram test cases</title>
+  </head>
+  <body>
+    <script type="module">
+      import * as cases from "./cases/index.js";
+
+      const names = Object.keys(cases);
+
+      // Tool
+      const tool = document.createElement("div");
+      tool.id = "tool";
+      tool.style.display = "flex";
+      tool.style.gap = "0.5em";
+      tool.style.margin = "1em 0px";
+      document.body.append(tool);
+
+      const caseSelect = createSelect(update);
+      setOptions(caseSelect, names);
+      tool.append(caseSelect);
+
+      const container = document.createElement("div");
+      container.id = "container";
+      document.body.append(container);
+
+      // Init from the URL, such as ?name=pretextCirclePath.
+      const params = new URL(location).searchParams;
+      const initialName = params.get("name");
+      if (cases[initialName]) caseSelect.value = initialName;
+      render();
+
+      // The arrow keys move through the cases.
+      document.onkeydown = (event) => {
+        if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+        switch (event.key) {
+          case "ArrowLeft": {
+            if (caseSelect.selectedIndex > 0) {
+              caseSelect.selectedIndex--;
+              update();
+            } else alert("This is the first test case.");
+            break;
+          }
+          case "ArrowRight": {
+            if (caseSelect.selectedIndex < caseSelect.options.length - 1) {
+              caseSelect.selectedIndex++;
+              update();
+            } else alert("This is the last test case.");
+            break;
+          }
+        }
+      };
+
+      function createSelect(onchange) {
+        const select = document.createElement("select");
+        select.style.height = "20px";
+        select.onchange = onchange;
+        return select;
+      }
+
+      function setOptions(select, keys) {
+        select.replaceChildren(...keys.map(createOption));
+      }
+
+      function createOption(key) {
+        const option = document.createElement("option");
+        option.value = key;
+        option.textContent = key;
+        return option;
+      }
+
+      function update() {
+        const name = caseSelect.value;
+        history.pushState({name}, "", `?name=${name}`);
+        render();
+      }
+
+      async function render() {
+        const node = await cases[caseSelect.value]();
+        container.replaceChildren(node);
+      }
+    </script>
+  </body>
+</html>

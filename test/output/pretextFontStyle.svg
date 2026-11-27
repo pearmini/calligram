@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" overflow="visible">
+  <path d="M 200 105 A 95 95 0 1 0 200 295 A 95 95 0 1 0 200 105" fill="none" stroke="black" stroke-width="1"></path>
+  <line x1="200" y1="105" x2="200" y2="105" stroke="black" stroke-width="1"></line>
+  <line x1="135" y1="131" x2="265" y2="131" stroke="black" stroke-width="1"></line>
+  <line x1="116" y1="157" x2="284" y2="157" stroke="black" stroke-width="1"></line>
+  <line x1="107" y1="183" x2="294" y2="183" stroke="black" stroke-width="1"></line>
+  <line x1="105" y1="209" x2="295" y2="209" stroke="black" stroke-width="1"></line>
+  <line x1="111" y1="235" x2="289" y2="235" stroke="black" stroke-width="1"></line>
+  <line x1="127" y1="261" x2="273" y2="261" stroke="black" stroke-width="1"></line>
+  <line x1="160" y1="287" x2="239" y2="287" stroke="black" stroke-width="1"></line>
+  <text text-anchor="middle" dominant-baseline="central" font-size="17px" font-family="Inter" font-style="italic" font-variant="normal" font-weight="700" transform="translate(199, 131) rotate(0)">Italic bold · 春天</text>
+  <text text-anchor="middle" dominant-baseline="central" font-size="17px" font-family="Inter" font-style="italic" font-variant="normal" font-weight="700" transform="translate(124, 157) rotate(0)">到了</text>
+  <text text-anchor="middle" dominant-baseline="central" font-size="17px" font-family="Inter" font-style="italic" font-variant="normal" font-weight="700" transform="translate(212, 157) rotate(0)">Italic bold · 春天到了</text>
+  <text text-anchor="middle" dominant-baseline="central" font-size="17px" font-family="Inter" font-style="italic" font-variant="normal" font-weight="700" transform="translate(179, 183) rotate(0)">Italic bold · 春天到了</text>
+  <text text-anchor="middle" dominant-baseline="central" font-size="17px" font-family="Inter" font-style="italic" font-variant="normal" font-weight="700" transform="translate(275, 183) rotate(0)">Ital</text>
+  <text text-anchor="middle" dominant-baseline="central" font-size="17px" font-family="Inter" font-style="italic" font-variant="normal" font-weight="700" transform="translate(161, 209) rotate(0)">ic bold · 春天到了</text>
+  <text text-anchor="middle" dominant-baseline="central" font-size="17px" font-family="Inter" font-style="italic" font-variant="normal" font-weight="700" transform="translate(249, 209) rotate(0)">Italic </text>
+  <text text-anchor="middle" dominant-baseline="central" font-size="17px" font-family="Inter" font-style="italic" font-variant="normal" font-weight="700" transform="translate(155, 235) rotate(0)">bold · 春天到了</text>
+  <text text-anchor="middle" dominant-baseline="central" font-size="17px" font-family="Inter" font-style="italic" font-variant="normal" font-weight="700" transform="translate(231, 235) rotate(0)">Italic </text>
+  <text text-anchor="middle" dominant-baseline="central" font-size="17px" font-family="Inter" font-style="italic" font-variant="normal" font-weight="700" transform="translate(275, 235) rotate(0)">bol</text>
+  <text text-anchor="middle" dominant-baseline="central" font-size="17px" font-family="Inter" font-style="italic" font-variant="normal" font-weight="700" transform="translate(159, 261) rotate(0)">d · 春天到了</text>
+  <text text-anchor="middle" dominant-baseline="central" font-size="17px" font-family="Inter" font-style="italic" font-variant="normal" font-weight="700" transform="translate(223, 261) rotate(0)">Italic </text>
+  <text text-anchor="middle" dominant-baseline="central" font-size="17px" font-family="Inter" font-style="italic" font-variant="normal" font-weight="700" transform="translate(263, 261) rotate(0)">bo</text>
+  <text text-anchor="middle" dominant-baseline="central" font-size="17px" font-family="Inter" font-style="italic" font-variant="normal" font-weight="700" transform="translate(196, 287) rotate(0)">ld · 春天到了</text>
+</svg>
