@@ -33,7 +33,8 @@ export default defineConfig(({mode}) => {
     },
     server: {open: "/"},
     build: {
-      outDir: resolve(dir, "dist"),
+      // dist/ holds the library bundle built by rollup; the site goes elsewhere.
+      outDir: resolve(dir, "dist-site"),
       emptyOutDir: true,
       rollupOptions: {
         input: Object.fromEntries([

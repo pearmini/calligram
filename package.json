@@ -27,6 +27,8 @@
     },
     "./package.json": "./package.json"
   },
+  "unpkg": "dist/calligram.umd.min.js",
+  "jsdelivr": "dist/calligram.umd.min.js",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -37,11 +39,12 @@
   },
   "homepage": "https://github.com/pearmini/calligram#readme",
   "files": [
-    "src"
+    "src",
+    "dist"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "rm -rf dist && rollup -c",
     "preview": "vite preview",
     "test": "npm run test:js && npm run test:lint && npm run test:format",
     "test:js": "vitest run",
@@ -51,7 +54,8 @@
     "test:format": "prettier --check src test demo script",
     "build:logo": "node script/build-logo.js",
     "screenshot": "node script/screenshot.js",
-    "build:site": "vite build --mode site"
+    "build:site": "vite build --mode site",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@chenglou/pretext": "^0.0.4",
@@ -59,6 +63,9 @@
     "points-on-path": "^0.2.1"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^29.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^1.0.2",
     "clipper-lib": "^6.4.2",
     "d3": "^7.9.0",
     "eslint": "^8.57.1",
@@ -69,6 +76,7 @@
     "patch-package": "^8.0.1",
     "playwright-core": "^1.65.1",
     "prettier": "^3.8.1",
+    "rollup": "^4.68.9",
     "svgpath": "^2.6.0",
     "topojson-client": "^3.1.0",
     "us-atlas": "^3.0.1",
